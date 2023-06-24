@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { environment } from '../environments/environment';
+import  {AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule, Settings } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +34,12 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firestore, 'customer-management'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    FormsModule,
+    // FlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
