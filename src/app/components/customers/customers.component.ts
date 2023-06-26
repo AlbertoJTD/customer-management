@@ -19,4 +19,15 @@ export class CustomersComponent implements OnInit {
       }
     );
   }
+
+  getTotalBalance(): number {
+    let totalBalance: number = 0;
+    if (this.customers) {
+      this.customers.forEach(customer => {
+        totalBalance += customer.balance;
+      })
+    }
+
+    return totalBalance;
+  }
 }

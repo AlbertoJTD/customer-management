@@ -26,6 +26,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Balance</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -33,9 +34,35 @@
                 <td>{{ x + 1 }}</td>
                 <td>{{ customer.name }} {{ customer.last_name }}</td>
                 <td>{{ customer.balance | currency:'USD':'$' }}</td>
+                <td>
+                  <a routerLink="customer/edit/{{customer.id}}" class="btn btn-secondary">
+                    <i class="fa fa-angle-double-right"></i> Edit
+                  </a>
+                </td> 
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="col-md-3">
+        <div class="card text-center bg-danger text-white">
+          <div class="card-body">
+            <h3>Total balance</h3>
+            <h4 class="display-4">
+              {{ getTotalBalance() | currency: 'USD':'$' }}
+            </h4>
+          </div>
+        </div>
+
+        <div class="card text-center bg-success text-white">
+          <div class="card-body">
+            <h3>Total customers</h3>
+            <h4 class="display-4">
+              <i class="fa fa-users"></i> {{ customers?.length }}
+            </h4>
+          </div>
         </div>
       </div>
     </div>
