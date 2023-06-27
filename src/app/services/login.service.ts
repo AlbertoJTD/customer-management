@@ -19,7 +19,14 @@ export class LoginService {
     );
   }
 
-  logout() {
+  logout(): void {
     this.authService.signOut();
+  }
+
+  signup(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      this.authService.createUserWithEmailAndPassword(email, password)
+        .then(data => resolve(data), error => reject(error));
+    });
   }
 }

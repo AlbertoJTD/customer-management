@@ -1,1 +1,49 @@
-<p>signup works!</p>
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+          <i class="fa fa-user"></i> Signup
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+
+    </div>
+  </div>
+</section>
+
+<section id="signup">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h4>Signup</h4>
+          </div>
+
+          <div class="card-body">
+            <form #loginForm="ngForm" (submit)="signup()">
+              <div class="mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" required [(ngModel)]="email">
+              </div>
+
+              <div class="mb-2">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required [(ngModel)]="password">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Signup</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
