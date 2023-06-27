@@ -28,15 +28,15 @@
           </div>
 
           <div class="card-body">
-            <form (submit)="login()">
+            <form #loginForm="ngForm" (submit)="login()">
               <div class="mb-2">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" required [(ngModel)]="email">
+                <input type="email" name="email" class="form-control" required [(ngModel)]="email">
               </div>
 
               <div class="mb-2">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" required [(ngModel)]="password">>
+                <input type="password" name="password" class="form-control" required [(ngModel)]="password">
               </div>
 
               <button type="submit" class="btn btn-primary">Login</button>
