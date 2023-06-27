@@ -1,1 +1,130 @@
-<p>edit-customer works!</p>
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>
+          <i class="fa fa-user"></i> Edit customer
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<form #customerForm="ngForm" >
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a routerLink="/" class="btn btn-light btn-block">
+            <i class="fa fa-arrow-left"></i> Back to home page
+          </a>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success btn-block">
+            <i class="fa fa-check"></i> Save customer
+          </button>
+        </div>
+        <div class="col-md-3">
+          <a href="#"  class="btn btn-danger btn-block">
+            <i class="fa fa-trash"></i> Delete customer
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Edit customer</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="mb-2">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                #name="ngModel"
+                [(ngModel)]="customer.name"
+                [ngClass]="{'is-valid': !name.errors && name.touched}"
+                required
+                minlength="2"
+                id="name"
+                placeholder="Type your name">
+          
+                <div [hidden]="!name.errors?.['required']"  class="text-danger">
+                  Name is required
+                </div>
+                <div [hidden]="!name.errors?.['minlength']"  class="text-danger">
+                  The name must contain at least 2 characters
+                </div>
+            </div>
+          
+            <div class="mb-2">
+              <label class="form-label">Last name</label>
+              <input type="text" 
+                    name="last_name"
+                    class="form-control"
+                    #last_name="ngModel"
+                    [(ngModel)]="customer.last_name"
+                    [ngClass]="{'is-valid': !last_name.errors && last_name.touched}"
+                    required
+                    minlength="2">
+          
+              <div [hidden]="!last_name.errors?.['required']"  class="text-danger">
+                Last name is required
+              </div>
+              <div [hidden]="!last_name.errors?.['minlength']"  class="text-danger">
+                The last name must contain at least 2 characters
+              </div>
+            </div>
+          
+            <div class="mb-2">
+              <label class="form-label">Email</label>
+              <input type="email" 
+                    name="email" 
+                    class="form-control"
+                    class="form-control"
+                    #email="ngModel"
+                    [(ngModel)]="customer.email"
+                    [ngClass]="{'is-valid': !email.errors && email.touched}"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    required
+                    minlength="2"
+                    placeholder="name@example.com">
+          
+              <div [hidden]="!email.errors?.['required']"  class="text-danger">
+                Email is required
+              </div>
+              <div [hidden]="!email.errors?.['pattern']"  class="text-danger">
+                Email is not valid
+              </div>
+            </div>
+          
+            <div class="mb-2">
+              <label class="form-label">Balance</label>
+              <input type="number" 
+                    id="balance"
+                    name="balance"
+                    class="form-control"
+                    #balance="ngModel"
+                    [(ngModel)]="customer.balance"
+                    [ngClass]="{'is-valid': !balance.errors && balance.touched}"
+                    required>
+              <div [hidden]="!balance.errors?.['required']"  class="text-danger">
+                Balance is required
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</form>
