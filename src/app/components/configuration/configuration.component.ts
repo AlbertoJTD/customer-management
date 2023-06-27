@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuration',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./configuration.component.css']
 })
 export class ConfigurationComponent {
+  allowRegistration: boolean = false;
 
+  constructor(private router: Router) { }
 }
