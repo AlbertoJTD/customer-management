@@ -31,7 +31,7 @@
           </a>
         </li>
 
-        <li *ngIf="!isLoggedIn" class="nav-item">
+        <li *ngIf="allowRegistration && !isLoggedIn" class="nav-item">
           <a routerLink="signup" class="nav-link" routerLinkActive="router-link-active">
             <i class="fa fa-user"></i> Signup
           </a>
