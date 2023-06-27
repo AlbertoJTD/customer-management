@@ -22,6 +22,7 @@ import { CustomerService } from './services/customer.service';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ConfigurationService } from './services/configuration.service';
+import { ConfigurationGuard } from './guards/configuration.guard';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { ConfigurationService } from './services/configuration.service';
     FormsModule,
     // FlashMessagesModule.forRoot()
   ],
-  providers: [CustomerService, LoginService, AuthGuard, ConfigurationService],
+  providers: [CustomerService, LoginService, AuthGuard, ConfigurationService, ConfigurationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

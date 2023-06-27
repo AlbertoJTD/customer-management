@@ -7,11 +7,12 @@ import { ConfigurationComponent } from './components/configuration/configuration
 import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ConfigurationGuard } from './guards/configuration.guard';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'signup', component: SignupComponent,canActivate: [ConfigurationGuard] },
   { path: 'configuration', component: ConfigurationComponent, canActivate: [AuthGuard] },
   { path: 'customer/edit/:id', component: EditCustomerComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent },
