@@ -42,7 +42,6 @@ export class CustomersComponent implements OnInit {
   }
 
   addCustomer(form: NgForm) {
-    console.log(form);
     if (!form.valid) {
       alert('Please fill in the form');
     } else {

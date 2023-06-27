@@ -10,7 +10,7 @@
   </div>
 </header>
 
-<form #customerForm="ngForm" >
+<form #customerForm="ngForm" (ngSubmit)="save(customerForm)">
   <section id="actions" class="py-4 mb-4 bg-light">
     <div class="container">
       <div class="row">
@@ -25,7 +25,7 @@
           </button>
         </div>
         <div class="col-md-3">
-          <a href="#"  class="btn btn-danger btn-block">
+          <a href="#" (click)="delete()" class="btn btn-danger btn-block">
             <i class="fa fa-trash"></i> Delete customer
           </a>
         </div>

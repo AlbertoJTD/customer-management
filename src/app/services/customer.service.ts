@@ -48,4 +48,14 @@ export class CustomerService {
 
     return this.customer;
   }
+
+  updateCustomer(customer: Customer) {
+    this.customerDoc = this.db.doc<Customer>(`customers/${customer.id}`);
+    this.customerDoc.update(customer);
+  }
+
+  deteleCustomer(customer: Customer) {
+    this.customerDoc = this.db.doc<Customer>(`customers/${customer.id}`);
+    this.customerDoc.delete();
+  }
 }

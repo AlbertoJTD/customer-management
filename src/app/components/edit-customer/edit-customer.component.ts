@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -25,5 +26,24 @@ export class EditCustomerComponent implements OnInit {
     this.customerService.getCustomer(this.id).subscribe(customer => {
       this.customer = customer;
     });
+  }
+
+  save(form: NgForm) {
+    if (!form.valid) {
+      alert('Please fill in the form');
+    } else {
+      form.value.id = this.id;
+      this.customerService.updateCustomer(form.value);
+
+      this.router.navigate(['/']);
+    }
+  }
+
+  delete() {
+    if (confirm('Are you sure you want to do this action? ⚠️')) {
+      this.customerService.deteleCustomer(this.customer);
+
+      this.router.navigate(['/']);
+    }
   }
 }
