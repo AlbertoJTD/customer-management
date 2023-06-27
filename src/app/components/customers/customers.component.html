@@ -13,39 +13,58 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addCustomer">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-info text-white">
         <h1 class="modal-title fs-5">Add customer</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body">
-        <div class="form-floating mb-2">
-          <input type="text" class="form-control" id="name" name="name">
-          <label for="">Name</label>
+      <form #customerForm="ngForm" (ngSubmit)="addCustomer(customerForm)">
+        <div class="modal-body">
+          <div class="mb-2">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              #name="ngModel"
+              [(ngModel)]="customer.name"
+              [ngClass]="{'is-valid': !name.errors && name.touched}"
+              required
+              minlength="2"
+              id="name"
+              placeholder="Type your name">
+
+              <div [hidden]="!name.errors?.['required']"  class="text-danger">
+                Name is required
+              </div>
+              <div [hidden]="!name.errors?.['minlength']"  class="text-danger">
+                The name must contain at least 2 characters
+              </div>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Last name</label>
+            <input type="last_name" class="form-control" id="last_name" name="last_name">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" placeholder="name@example.com">
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label">Balance</label>
+            <input type="number" class="form-control" name="balance" id="balance">
+          </div>
         </div>
 
-        <div class="form-floating mb-2">
-          <input type="last_name" class="form-control" id="last_name" name="last_name">
-          <label for="">Last name</label>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
-
-        <div class="form-floating mb-2">
-          <input type="email" class="form-control" id="email" name="email">
-          <label for="">Email</label>
-        </div>
-
-        <div class="form-floating mb-2">
-          <input type="number" class="form-control" id="balance" name="balance">
-          <label for="">Balance</label>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Save customer</button>
-      </div>
+      </form>
     </div>
   </div>
 </div>
@@ -99,7 +118,7 @@
           <div class="card-body">
             <h3>Total customers</h3>
             <h4 class="display-4">
-              <i class="fa fa-users"></i> {{ customers?.length }}
+              <i class="fa fa-users"></i> {{ customers.length }}
             </h4>
           </div>
         </div>

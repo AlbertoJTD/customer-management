@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -8,7 +9,13 @@ import { CustomerService } from 'src/app/services/customer.service';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  customers: Customer[];
+  customers: Customer[] = [];
+  customer: Customer = {
+    name: '',
+    last_name: '',
+    email: '',
+    balance: 0
+  };
 
   constructor(private customerService: CustomerService) { }
   
@@ -29,5 +36,14 @@ export class CustomersComponent implements OnInit {
     }
 
     return totalBalance;
+  }
+
+  addCustomer(form: NgForm) {
+    console.log(form);
+    if (!form.valid) {
+      alert('Please fill in the form');
+    } else {
+      // Create new costumer
+    }
   }
 }
