@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -16,6 +16,9 @@ export class CustomersComponent implements OnInit {
     email: '',
     balance: 0
   };
+
+  @ViewChild('customerForm') customerForm: NgForm;
+  @ViewChild('closeModalButton') closeModalButton: ElementRef;
 
   constructor(private customerService: CustomerService) { }
   
@@ -43,7 +46,13 @@ export class CustomersComponent implements OnInit {
     if (!form.valid) {
       alert('Please fill in the form');
     } else {
-      // Create new costumer
+      this.customerService.createCustomer(form.value);
+      this.customerForm.resetForm();
+      this.closeModal();
     }
+  }
+
+  private closeModal():void {
+    this.closeModalButton.nativeElement.click();
   }
 }

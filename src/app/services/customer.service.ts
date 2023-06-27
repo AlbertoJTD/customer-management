@@ -27,4 +27,8 @@ export class CustomerService {
 
     return this.customers;
   }
+
+  createCustomer(customer: Customer): void {
+    this.customerCollection.add(customer);
+  }
 }
